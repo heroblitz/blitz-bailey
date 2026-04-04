@@ -1,19 +1,22 @@
 {
-  "name": "naruyaizumi",
-  "version": "26.0.4",
-  "description": "baileys whatsapp-api",
+  "name": "blitz-bailey",
+  "version": "1.0.0",
+  "description": "A customized and optimized version of the Baileys WhatsApp API.",
   "keywords": [
     "automation",
     "whatsapp",
-    "baileys"
+    "baileys",
+    "blitz-bailey"
   ],
-  "homepage": "https://github.com/naruyaizumi/baileys",
+  "homepage": "https://github.com/heroblitz/Blitz-bailey",
   "repository": {
-    "url": "https://github.com/naruyaizumi/baileys"
+    "type": "git",
+    "url": "git+https://github.com/heroblitz/Blitz-bailey.git"
   },
   "license": "MIT",
-  "author": "Naruya Izumi",
+  "author": "Heroblitz",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/*",
     "WAProto/*",
@@ -21,6 +24,8 @@
     "engine-requirements.js"
   ],
   "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
     "preinstall": "node ./engine-requirements.js"
   },
   "dependencies": {
@@ -46,10 +51,7 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "directories": {
-    "lib": "lib"
-  },
   "bugs": {
-    "url": "https://github.com/naruyaizumi/baileys/issues"
+    "url": "https://github.com/heroblitz/Blitz-bailey/issues"
   }
 }
