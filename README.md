@@ -8,9 +8,18 @@
 
 <div align="center">
 
+<svg width="600" height="60">
+  <rect width="100%" height="100%" fill="none" />
+  <text x="50%" y="40" font-family="Verdana" font-size="35" font-weight="bold" fill="#FFD700" text-anchor="middle">
+    H I G H - V O L T A G E - A P I
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" />
+    <animate attributeName="fill" values="#FFD700;#FFF;#FFD700" dur="0.5s" repeatCount="indefinite" />
+  </text>
+</svg>
+
 ![GitHub Stars](https://img.shields.io/github/stars/heroblitz/Blitz-bailey?style=for-the-badge&color=yellow&logo=github)
 ![Node Version](https://img.shields.io/badge/Node.js-%3E%3D20.0.0-green?style=for-the-badge&logo=node.js)
-![Version](https://img.shields.io/badge/Version-1.0.4--Blitz-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-26.0.4--Blitz-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge)
 
 <p align="center">
@@ -22,8 +31,8 @@
   </a>
 </p>
 
-### **The Most Advanced, Lightning-Fast WhatsApp Web API Engine.**
-*Modified and Optimized by **Blitz**.*
+### **The Most Powerful WhatsApp Multi-Device Engine Ever Built.**
+*Architected for ⚡︎ Speed, ☠︎ Precision, and 🎴 Advanced UI.*
 
 ---
 
@@ -32,347 +41,289 @@
 </div>
 
 ## 📖 Table of Contents
-1. [Introduction](#-introduction)
-2. [Key Features](#-key-features)
-3. [Installation](#-installation)
-4. [Connecting to WhatsApp](#-connecting-to-whatsapp)
-    - [QR Code Login](#qr-code-login)
-    - [Custom Pairing Code (Blitz Special)](#custom-pairing-code-blitz-special)
-5. [Core Messaging](#-core-messaging)
-    - [Text & Quoted](#text--quoted)
-    - [Media (Image, Video, Audio)](#media-image-video-audio)
-    - [Reactions](#reactions)
-    - [Poll Messages](#poll-messages)
-6. [Advanced UI Elements](#-advanced-ui-elements)
-    - [Horizontal Slides / Carousels](#horizontal-slides--carousels)
-    - [Interactive Buttons](#interactive-buttons)
-    - [List Menus](#list-menus)
-7. [Group Management](#-group-management)
-8. [Newsletters & Channels](#-newsletters--channels)
-    - [ID Fetching](#id-fetching)
-9. [Status / Stories](#-status--stories)
-    - [Status Mentions](#status-mentions)
-10. [Business Features](#-business-features)
-11. [Event Handling](#-event-handling)
-12. [Configuration (SocketConfig)](#-configuration-socketconfig)
-13. [Utility Functions](#-utility-functions)
-14. [Troubleshooting & FAQ](#-troubleshooting--faq)
-15. [Contact & Credits](#-contact--credits)
+<details>
+<summary><b>Unfold the Blitz-bailey scroll</b></summary>
+
+1. [⚡︎ Introduction](#-introduction)
+2. [🚀 Installation](#-installation)
+3. [🔌 Connectivity & Auth Logic](#-connectivity--auth-logic)
+    - [The Multi-File State System](#the-multi-file-state-system)
+    - [Pairing Code Logic](#pairing-code-logic)
+4. [💬 Basic Messaging](#-basic-messaging)
+    - [Text & Quoted Replies](#text--quoted-replies)
+    - [Media (HD Support)](#media-hd-support)
+    - [Polls & Reactions](#polls--reactions)
+5. [🎴 Advanced UI: The Carousel System](#-advanced-ui-the-carousel-system)
+    - [Horizontal Slides Implementation](#horizontal-slides-implementation)
+6. [🔘 Interactive UI Elements](#-interactive-ui-elements)
+    - [Native Flow Buttons](#native-flow-buttons)
+    - [List & Section Menus](#list--section-menus)
+7. [🤳 Status (Stories) God-Tier Logic](#-status-stories-god-tier-logic)
+    - [Status Group Posting (Privacy Targeting)](#status-group-posting-privacy-targeting)
+    - [Status Group Mentioning (Mass Notifying)](#status-group-mentioning-mass-notifying)
+8. [📢 Newsletters & Channels](#-newsletters--channels)
+    - [Channel ID Fetcher (Unmask JIDs)](#channel-id-fetcher-unmask-jids)
+    - [Newsletter Interactions](#newsletter-interactions)
+9. [🛡️ Group Engineering](#-group-engineering)
+    - [Advanced Participant Control](#advanced-participant-control)
+    - [Community & Approval Modes](#community--approval-modes)
+10. [💼 Business & Payments](#-business--payments)
+    - [Catalog & Product Sync](#catalog--product-sync)
+    - [Order Detail Decoding](#order-detail-decoding)
+11. [🛠️ Technical Utilities](#-technical-utilities)
+    - [JID Decoder & LID Support](#jid-decoder--lid-support)
+    - [Event Buffering & Mutex](#event-buffering--mutex)
+12. [⚙️ Socket Configuration Reference](#-socket-configuration-reference)
+13. [☠︎ Troubleshooting & Banning Prevention](#-troubleshooting--banning-prevention)
+14. [⚡︎ Credits & Legal](#-credits--legal)
+</details>
 
 ---
 
 ## ⚡︎ Introduction
-**Blitz-bailey** is a high-performance, modular WhatsApp Web API library built in TypeScript. Unlike other libraries that use heavy browsers like Puppeteer, Blitz-bailey connects directly to WhatsApp's servers via WebSockets, making it the fastest and most efficient way to build WhatsApp bots and automation systems.
-
----
-
-## ☠︎ Key Features
-- **Fastest Performance:** Direct WebSocket connection.
-- **Multi-Device Support:** Stays online even when the phone is dead.
-- **Carousel Support:** Send swipeable card messages.
-- **Newsletter Logic:** Fully integrated Channel/Newsletter functions.
-- **Custom Pairing:** Generate specific pairing codes (e.g., `BLITZACE`).
-- **Status God Mode:** Post status updates with mass mentions.
-- **Interactive UI:** Lists, Native Flow Buttons, and Templates.
-- **Native Polls:** Create and track real-time poll updates.
+**Blitz-bailey** is a total overhaul of the WhatsApp Multi-Device (MD) protocol handler. It doesn't just "talk" to WhatsApp; it masters it. Designed for developers who need to implement **Horizontal Slides**, **Channel Scrapers**, and **Mass-Mention Statuses**, this library provides the rawest and most direct access to the WhatsApp WebSocket layer.
 
 ---
 
 ## 🚀 Installation
 
-Install via NPM:
+Install directly from the Blitz source:
 ```bash
-npm install github:heroblitz/Blitz-bailey
+npm install heroblitz/Blitz-bailey
 ```
 
-Or clone and build:
-```bash
-git clone https://github.com/heroblitz/Blitz-bailey.git
-cd Blitz-bailey
-npm install
-npm run build
+Or add it to your `package.json` dependencies:
+```json
+"dependencies": {
+    "blitz-bailey": "github:heroblitz/Blitz-bailey"
+}
 ```
 
 ---
 
-## 🔌 Connecting to WhatsApp
+## 🔌 Connectivity & Auth Logic
 
-### QR Code Login
-The classic way to connect your bot.
+Blitz-bailey uses a high-performance authentication system that prevents session corruption and handles multiple device links seamlessly.
+
+### The Multi-File State System
 ```javascript
-const makeWASocket = require('blitz-bailey').default;
-const { useMultiFileAuthState } = require('blitz-bailey');
+const { default: makeWASocket, useMultiFileAuthState, delay } = require('blitz-bailey');
 
-async function connect() {
-    const { state, saveCreds } = await useMultiFileAuthState('session');
+async function initializeBlitz() {
+    const { state, saveCreds } = await useMultiFileAuthState('session_data');
+
     const sock = makeWASocket({
         auth: state,
-        printQRInTerminal: true
+        printQRInTerminal: true,
+        version: [2, 3000, 1023223821], // ⚡︎ Hardcoded for stability
+        syncFullHistory: true
     });
+
     sock.ev.on('creds.update', saveCreds);
+    
+    sock.ev.on('connection.update', (update) => {
+        const { connection, lastDisconnect, qr } = update;
+        if (connection === 'close') {
+            console.log("☠︎ Connection Lost. Reconnecting...");
+            initializeBlitz();
+        } else if (connection === 'open') {
+            console.log("⚡︎ BLITZ-BAILEY ONLINE ⚡︎");
+        }
+    });
 }
-connect();
 ```
 
-### Custom Pairing Code (Blitz Special)
-Don't want to scan a QR? Use the **Custom Pairing Code** feature. This allows you to generate a specific code.
-
+### Pairing Code Logic
+Link your bot without a QR code using the pairing engine.
 ```javascript
-const phoneNumber = "23480xxxxxxxx"; // Your number
-const customCode = "BLITZACE"; // ⚡︎ Custom code logic
-
-const sock = makeWASocket({
-    auth: state,
-    printQRInTerminal: false
-});
-
 if (!sock.authState.creds.registered) {
-    // Request code from WhatsApp servers
-    const code = await sock.requestPairingCode(phoneNumber, customCode);
-    console.log(`Your Blitz Pairing Code: ${code}`);
+    const phoneNumber = "23480xxxxxxxx"; 
+    // Request a pairing code from WhatsApp
+    const code = await sock.requestPairingCode(phoneNumber);
+    console.log(`⚡︎ PAIRING CODE: ${code}`);
 }
 ```
 
 ---
 
-## 💬 Core Messaging
+## 💬 Basic Messaging
 
-### Text & Quoted
+### Text & Quoted Replies
 ```javascript
-// Normal Text
-await sock.sendMessage(jid, { text: 'Hello from Blitz-bailey! ⚡︎' });
-
-// Quoted Message
-await sock.sendMessage(jid, { text: 'This is a reply' }, { quoted: m });
-```
-
-### Media (Image, Video, Audio)
-```javascript
-// Send Image
 await sock.sendMessage(jid, { 
-    image: { url: './path/to/img.jpg' }, 
-    caption: 'Powered by Blitz' 
-});
-
-// Send Voice Note (PTT)
-await sock.sendMessage(jid, { 
-    audio: { url: './path/to/voice.mp3' }, 
-    ptt: true 
-}, { mimetype: 'audio/mpeg' });
-```
-
-### Reactions
-```javascript
-const reactionMessage = {
-    react: {
-        text: "⚡︎", 
-        key: m.key // Key of the message you want to react to
+    text: 'Hello from Blitz-bailey!',
+    contextInfo: { 
+        mentionedJid: [jid],
+        externalAdReply: {
+            title: "Blitz Edition",
+            body: "The King of APIs",
+            thumbnailUrl: "https://files.catbox.moe/c6m3xc.jpg",
+            sourceUrl: "https://t.me/blitz_tech",
+            mediaType: 1,
+            renderLargerThumbnail: true
+        }
     }
-}
-await sock.sendMessage(jid, reactionMessage);
+}, { quoted: m });
 ```
 
-### Poll Messages
+### Media HD Support
 ```javascript
 await sock.sendMessage(jid, {
-    poll: {
-        name: "Which is the best lib?",
-        values: ["Blitz-bailey", "Others"],
-        selectableCount: 1
-    }
+    image: { url: 'https://files.catbox.moe/c6m3xc.jpg' },
+    caption: 'High Voltage Media',
+    viewOnce: true // ☠︎ Stealth mode
 });
 ```
 
 ---
 
-## 🎴 Advanced UI Elements
+## 🎴 Advanced UI: The Carousel System
 
-### Horizontal Slides / Carousels
-Blitz-bailey supports sending swipeable cards, perfect for menus.
+One of the unique features of Blitz-bailey is the ability to send **Horizontal Slides (Carousels)**.
 
 ```javascript
 await sock.sendMessage(jid, {
     cards: [
         {
-            title: "Feature 1",
-            body: "Lightning fast speed",
-            footer: "Blitz Edition",
-            image: { url: "https://example.com/1.jpg" },
-            buttons: [{ name: "quick_reply", buttonParamsJson: '{"display_text":"Order Now","id":"id1"}' }]
+            title: "Blitz Feature A",
+            body: "Lightning Fast Speed",
+            footer: "Powered by @blitzxdev",
+            image: { url: "https://example.com/slide1.jpg" },
+            buttons: [
+                { name: "cta_url", buttonParamsJson: '{"display_text":"Get Started","url":"https://t.me/blitzxdev"}' }
+            ]
         },
         {
-            title: "Feature 2",
-            body: "Custom UI Elements",
-            footer: "Blitz Edition",
-            image: { url: "https://example.com/2.jpg" },
-            buttons: [{ name: "quick_reply", buttonParamsJson: '{"display_text":"View More","id":"id2"}' }]
+            title: "Blitz Feature B",
+            body: "Skull Precision Power",
+            footer: "Join @blitz_tech",
+            image: { url: "https://example.com/slide2.jpg" },
+            buttons: [
+                { name: "quick_reply", buttonParamsJson: '{"display_text":"Join Channel","id":"join_id"}' }
+            ]
         }
     ]
 });
 ```
 
-### Interactive Buttons
-```javascript
-const buttons = [
-  { name: 'button_id_1', buttonParamsJson: '{"display_text":"Option 1","id":"1"}' },
-  { name: 'button_id_2', buttonParamsJson: '{"display_text":"Option 2","id":"2"}' }
-];
+---
 
-await sock.sendMessage(jid, {
-    text: "Please choose an option:",
-    footer: "Blitz-bailey Tech",
-    buttons: buttons,
-    headerType: 1
+## 🤳 Status (Stories) God-Tier Logic
+
+Blitz-bailey provides two distinct ways to manipulate WhatsApp Status:
+
+### 1. Status Group Posting (Privacy Targeting)
+Only show your status to a specific list of Groups or People.
+```javascript
+await sock.sendMessage("status@broadcast", {
+    text: "This status is invisible to everyone except the JID list below."
+}, {
+    statusJidList: [
+        "120363xxxx@g.us", // Target Group
+        "23480xxxxxxxx@s.whatsapp.net" // Target User
+    ]
 });
 ```
 
----
-
-## 🛡️ Group Management
-Blitz-bailey provides full control over your communities.
-
-```javascript
-// Create a Group
-const group = await sock.groupCreate("Blitz Squad", ["234xxx@s.whatsapp.net"]);
-
-// Add Member
-await sock.groupParticipantsUpdate(jid, ["234xxx@s.whatsapp.net"], "add");
-
-// Promote to Admin
-await sock.groupParticipantsUpdate(jid, ["234xxx@s.whatsapp.net"], "promote");
-
-// Fetch Join Requests
-const requests = await sock.groupRequestParticipantsList(jid);
-```
-
----
-
-## 📢 Newsletters & Channels
-This is a premium feature implemented in Blitz-bailey.
-
-### ID Fetching
-Convert a public invite link to a Newsletter JID.
-```javascript
-const inviteCode = "0029VaXXXXX";
-const metadata = await sock.newsletterMetadata("invite", inviteCode);
-console.log("Newsletter JID:", metadata.id); // Returns 120363xxxx@newsletter
-```
-
-### Reacting to Channel Posts
-```javascript
-await sock.newsletterReactMessage(newsletterJid, serverId, "🔥");
-```
-
----
-
-## 🤳 Status / Stories
-Blitz-bailey can manage your WhatsApp Statuses with high-level functions.
-
-### Status Mentions
-Mention everyone in a group or specific people in your status so they get notified!
+### 2. Status Group Mentioning (Mass Notifying)
+Post a status and "tag" people/groups so they receive a notification alert.
 ```javascript
 await sock.sendStatusMentions(
-    { text: "Check out Blitz-bailey! ⚡︎" }, 
+    { text: "⚡︎ ☠︎ ATTENTION SQUAD! ☠︎ ⚡︎" }, 
     "status@broadcast", 
-    ["234xxx@s.whatsapp.net"] // People who will be notified
+    ["120363xxxx@g.us", "234xxxxxxx@s.whatsapp.net"] // People notified immediately
 );
 ```
 
 ---
 
-## 💼 Business Features
-Build a full marketplace inside WhatsApp.
+## 📢 Newsletters & Channels
 
+### Channel ID Fetcher (Unmask JIDs)
+Public invite links don't show the real JID. Blitz-bailey can unmask any channel.
 ```javascript
-// Fetch Business Profile
-const profile = await sock.getBusinessProfile("jid@s.whatsapp.net");
+const inviteCode = "0029VaXXXXX"; // The code from the link
+const channel = await sock.newsletterMetadata("invite", inviteCode);
 
-// Fetch Catalog
-const catalog = await sock.getCatalog({ jid: "jid@s.whatsapp.net" });
+console.log(`⚡︎ ID: ${channel.id}`); // Returns 120363xxxx@newsletter
+console.log(`⚡︎ Title: ${channel.name}`);
+console.log(`⚡︎ Followers: ${channel.subscribers}`);
 ```
 
 ---
 
-## 🛠️ Event Handling
-Stay updated with everything happening in the socket.
+## 🛡️ Group Engineering
 
+### Advanced Participant Control
+```javascript
+// Bulk Add with rejection handling
+const response = await sock.groupParticipantsUpdate(jid, ["user1@s.whatsapp.net", "user2@s.whatsapp.net"], "add");
+
+// Manage Join Requests (Approve/Reject)
+await sock.groupRequestParticipantsUpdate(jid, ["user1@s.whatsapp.net"], "approve");
+```
+
+---
+
+## ⚙️ Socket Configuration Reference
+
+Blitz-bailey gives you deep configuration options found in `lib/Types/Socket.d.ts`:
+
+| Property | Description |
+| :--- | :--- |
+| `waWebSocketUrl` | Set a custom WS endpoint or proxy. |
+| `connectTimeoutMs` | How long to wait before declaring a connection dead. |
+| `keepAliveIntervalMs` | Ping-pong interval to stay online. |
+| `shouldSyncHistoryMessage` | Filter which history messages are processed. |
+| `linkPreviewImageThumbnailWidth` | Set custom width for link previews. |
+| `generateHighQualityLinkPreview` | Force HD thumbnails for links. |
+
+---
+
+## 🛠️ Technical Utilities
+
+### JID Decoder & LID Support
+WhatsApp is moving to **LID (Linked Identity)**. Blitz-bailey fully supports decoding these.
+```javascript
+const realJid = sock.decodeJid(m.key.remoteJid);
+const lidUser = await sock.getLidUser(realJid);
+console.log(`LID Address: ${lidUser[0].lid}`);
+```
+
+### Event Buffering
+Use `makeEventBuffer` to handle massive amounts of messages without crashing the bot.
 ```javascript
 sock.ev.process(async (events) => {
-    // Connection Update (QR, Logged In, Disconnected)
-    if (events['connection.update']) {
-        const update = events['connection.update'];
-        console.log('Connection Status:', update.connection);
-    }
-
-    // New Message Received
     if (events['messages.upsert']) {
-        const upsert = events['messages.upsert'];
-        console.log('New Message:', JSON.stringify(upsert, null, 2));
-    }
-
-    // Participants Update (Groups)
-    if (events['group-participants.update']) {
-        console.log('Group Update:', events['group-participants.update']);
+        // Automatically buffered and batch-processed
     }
 });
 ```
 
 ---
 
-## ⚙️ Configuration (SocketConfig)
-You can fine-tune your connection:
-
-| Property | Type | Description |
-| :--- | :--- | :--- |
-| `logger` | `ILogger` | Custom PINO logger for debugging. |
-| `browser` | `[string, string, string]` | The User-Agent (e.g., ["Blitz", "Safari", "1.0"]). |
-| `printQRInTerminal` | `boolean` | Whether to show the QR in console. |
-| `auth` | `AuthenticationState` | Your session state. |
-| `markOnlineOnConnect` | `boolean` | Automatically show as "Online". |
-| `retryRequestDelayMs` | `number` | Time to wait before retrying a failed message. |
+## ☠︎ Troubleshooting & Banning Prevention
+1. **Version Control:** Ensure you use the version `[2, 3000, 1023223821]` to match current MD requirements.
+2. **Rate Limiting:** Blitz-bailey is fast, but sending 100 messages a second will get you banned. Use `await delay(1000)`.
+3. **Session Safety:** Always use `multi-file-auth`. `single-file-auth` is deprecated and unstable.
 
 ---
 
-## 🧰 Utility Functions
-
-### JID Decoding
-Clean those messy JIDs automatically.
-```javascript
-const cleanJid = sock.decodeJid("2348000000:1@s.whatsapp.net");
-// Returns: 2348000000@s.whatsapp.net
-```
-
----
-
-## ☠︎ Troubleshooting & FAQ
-
-**Q: Why am I getting "Timed Out"?**
-*A: Check your internet connection or your proxy settings. WhatsApp servers are sensitive to latency.*
-
-**Q: Can I use this for mass spamming?**
-*A: Blitz-bailey is built for automation. Abuse will get your number banned. Use responsibly.*
-
-**Q: Is it safe?**
-*A: Yes, it uses official E2E encryption protocols. Your messages are as safe as using the official app.*
-
----
-
-## ⚡︎ Contact & Credits
-**Blitz-bailey** is maintained by **Blitz**.
-
-- **Author:** Blitz
-- **Telegram:** [@blitzxdev](https://t.me/blitzxdev)
-- **Official Channel:** [@blitz_tech](https://t.me/blitz_tech)
-- **Base:** Baileys (MD)
-
----
+## ⚡︎ Credits & Legal
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%">
-  <p><strong>Developed with ⚡︎ by Blitz.</strong></p>
-  <img src="https://img.shields.io/badge/Status-Stable-brightgreen?style=for-the-badge" />
+
+**Project Lead:** Blitz  
+**Support:** [@blitzxdev](https://t.me/blitzxdev)  
+**Updates:** [@blitz_tech](https://t.me/blitz_tech)  
+
+**LICENSE: MIT**  
+*WhiskeySocket/Baileys was the inspiration, but Blitz-bailey is the evolution.*
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" width="100%">
+
+### ⚡︎ ☠︎ DEVELOPED BY BLITZ ☠︎ ⚡︎
+
 </div>
 
 ***
-
-*Note: This library is for educational purposes. We are not responsible for any account bans or data loss.*
